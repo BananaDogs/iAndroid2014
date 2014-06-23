@@ -64,30 +64,27 @@ public class Lada extends IRobotCreateAdapter {
 
 	public void loop() throws ConnectionLostException, InterruptedException {
 
+		dragRace();
+	}
+	
+	public void dragRace() throws ConnectionLostException, InterruptedException 
+	{
 		SystemClock.sleep(100);
 
 		int compassReading = readCompass();
 
 		dashboard.log(compassReading + "");
 		
-		//api.raceInAStraightLine(compassReading);
-		sonar.read();
-	//dashboard.log("FRONT DISTANCE " + sonar.getFrontDistance());
-	dashboard.log("LEFT DISTANCE " +sonar.getLeftDistance());
-	dashboard.log("RIGHT DISTANCE " + sonar.getRightDistance());
-	Thread.sleep(500);
-		/*if (counter == 1) {
+		if (counter == 1) {
 			api.setAverageReading(compassReading);
 			counter++;
-		} else {
-			api.raceInAStraightLine(compassReading);
 		}
+		api.raceInAStraightLine(compassReading);
 		sonar.read();
 		dashboard.log(" right " + sonar.getRightDistance() + " left " + sonar.getLeftDistance());
 		if(sonar.getRightDistance() < 40){
 			api.setAverageReading(api.getAverageReading() - 100);
 		}
-*/
 	}
 
 	public void turn(int commandAngle) throws ConnectionLostException {
